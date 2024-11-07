@@ -28,4 +28,5 @@ jobs:
           uses: actions/upload-artifact@v4
           with:
               name: build-artifact
+              path: jv17/target/jv17-0.0.1-SNAPSHOT.jar
         
