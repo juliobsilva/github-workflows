@@ -6,10 +6,9 @@ on:
         run_constructor:
           description: 'Run Constructor build'
           type: choice
-          required: true
           options:
-            - 'gradle'
-            - 'maven'
+            - gradle
+            - maven
           required: false
           default: 'maven'
 
