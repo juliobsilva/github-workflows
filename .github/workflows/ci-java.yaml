@@ -62,10 +62,10 @@ jobs:
           java-version: 17
 
       - name: Build with Gradle
-        run: ./gradlew build
+        run: gradlew build jv17/pom.xml
 
       - name: Run tests
-        run: ./gradlew test
+        run: gradlew test jv17/pom.xml
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
@@ -80,7 +80,7 @@ jobs:
 
       - name: Publish to GitHub Packages
         run: |
-          ./gradlew publish
+          gradlew publish -Drepository=github -DrepositoryUsername=${{ github.actor }} -DrepositoryPassword=$GITHUB_TOKEN
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN_GENERIC }}
         
