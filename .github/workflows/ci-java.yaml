@@ -4,6 +4,12 @@ on:
     push:
         branches:
         - main
+    workflow_dispatch:
+      inputs:
+        run_gradle:
+          description: 'Run Gradle build'
+          required: false
+          default: 'true'
 
 jobs:
     ci-java:
@@ -40,4 +46,40 @@ jobs:
               mvn deploy:deploy-file -Dfile=jv17/target/jv17-0.0.1-SNAPSHOT.jar -DgroupId=com.example.demo -DartifactId=jv17 -Dversion=0.0.1-SNAPSHOT -Dpackaging=jar -DrepositoryId=github -Durl=https://maven.pkg.github.com/juliobsilva/github-workflows
           env:
               GITHUB_TOKEN: ${{ secrets.TOKEN_GENERIC }}
+
+    ci-gradle:
+      if: github.event.inputs.run_gradle == 'true'
+      runs-on: ubuntu-latest
+
+      steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+        distribution: 'adopt'
+        java-version: 17
+
+      - name: Build with Gradle
+        run: ./gradlew build
+
+      - name: Run tests
+        run: ./gradlew test
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifact
+          path: build/libs/*.jar
+
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifact
+
+      - name: Publish to GitHub Packages
+        run: |
+          ./gradlew publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN_GENERIC }}
         
