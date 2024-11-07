@@ -83,7 +83,7 @@ jobs:
 
       - name: Publish to GitHub Packages
         run: |
-          gradlew publish -Drepository=github -DrepositoryUsername=${{ github.actor }} -DrepositoryPassword=$GITHUB_TOKEN
+          ./gradlew publish -Drepository=github -DrepositoryUsername=${{ github.actor }} -DrepositoryPassword=$GITHUB_TOKEN
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN_GENERIC }}
         
