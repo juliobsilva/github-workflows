@@ -49,7 +49,7 @@ jobs:
               GITHUB_TOKEN: ${{ secrets.TOKEN_GENERIC }}
 
     ci-gradle:
-      if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.run_gradle == 'true' }}
+      if: ${{ github.event.inputs.run_gradle == 'true' }}
       runs-on: ubuntu-latest
 
       steps:
