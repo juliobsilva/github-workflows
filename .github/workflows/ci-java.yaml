@@ -3,14 +3,19 @@ name: CI java
 on:
     workflow_dispatch:
       inputs:
-        run_gradle:
-          description: 'Run Gradle build'
+        run_constructor:
+          description: 'Run Constructor build'
+          type: choice
+          required: true
+          options:
+            - 'gradle'
+            - 'maven'
           required: false
-          default: 'true'
+          default: 'maven'
 
 jobs:
     build-ci-java-maven:
-        if: ${{ github.event.inputs.run_gradle == 'false' }}
+        if: ${{ github.event.inputs.run_gradle == 'maven' }}
         runs-on: ubuntu-latest
 
         steps:
@@ -23,10 +28,10 @@ jobs:
             java-version: 17
 
         - name: Build with Maven
-          run: mvn -B package --file jv17/pom.xml
+          run: mvn -B package --file mavenjava17/pom.xml
 
         - name: Run tests
-          run: mvn test --file jv17/pom.xml
+          run: mvn test --file mavenjava17/pom.xml
 
         - name: Upload artifact
           uses: actions/upload-artifact@v4
@@ -46,7 +51,7 @@ jobs:
               GITHUB_TOKEN: ${{ secrets.TOKEN_GENERIC }}
 
     build-ci-gradle:
-      if: ${{ github.event.inputs.run_gradle == 'true' }}
+      if: ${{ github.event.inputs.run_constructor == 'gradle' }}
       runs-on: ubuntu-latest
 
       steps:
