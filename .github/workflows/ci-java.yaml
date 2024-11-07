@@ -74,13 +74,12 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build-artifact
-          path: build/libs/*.jar
+          path: gradlejava17/build/libs/*.jar
 
       - name: Download artifact
         uses: actions/download-artifact@v4
         with:
           name: build-artifact-gradle
-          path: build/libs
 
       - name: Publish to GitHub Packages
         run: |
