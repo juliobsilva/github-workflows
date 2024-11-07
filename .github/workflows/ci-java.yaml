@@ -55,7 +55,6 @@ jobs:
       permissions:
         contents: write
         packages: write
-        metadata: write
 
       steps:
       - uses: actions/checkout@v4
