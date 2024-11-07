@@ -62,10 +62,10 @@ jobs:
           java-version: 17
 
       - name: Build with Gradle
-        run: gradlew build jv17/pom.xml
+        run: ./gradlew build jv17/pom.xml
 
       - name: Run tests
-        run: gradlew test jv17/pom.xml
+        run: ./gradlew test jv17/pom.xml
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
