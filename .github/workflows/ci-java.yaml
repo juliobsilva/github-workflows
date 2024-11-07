@@ -13,7 +13,7 @@ on:
 
 jobs:
     ci-java:
-        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.run_gradle == 'false' }}
+        if: ${{ github.event.inputs.run_gradle == 'false' }}
         runs-on: ubuntu-latest
 
         steps:
@@ -48,8 +48,8 @@ jobs:
           env:
               GITHUB_TOKEN: ${{ secrets.TOKEN_GENERIC }}
 
-    if: ${{ github.event.inputs.run_gradle == 'true' }}
-    ci-gradle:      
+    ci-gradle:
+      if: ${{ github.event.inputs.run_gradle == 'true' }}
       runs-on: ubuntu-latest
 
       steps:
