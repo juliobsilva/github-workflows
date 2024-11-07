@@ -9,7 +9,7 @@ on:
           default: 'true'
 
 jobs:
-    ci-java:
+    build-ci-java-maven:
         if: ${{ github.event.inputs.run_gradle == 'false' }}
         runs-on: ubuntu-latest
 
@@ -45,7 +45,7 @@ jobs:
           env:
               GITHUB_TOKEN: ${{ secrets.TOKEN_GENERIC }}
 
-    ci-gradle:
+    build-ci-gradle:
       if: ${{ github.event.inputs.run_gradle == 'true' }}
       runs-on: ubuntu-latest
 
