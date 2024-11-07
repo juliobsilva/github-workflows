@@ -1,6 +1,9 @@
 name: CI java
 
 on:
+    push:
+        branches:
+        - main
 
 jobs:
     ci-java:
