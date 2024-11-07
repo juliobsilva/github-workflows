@@ -14,7 +14,7 @@ on:
 
 jobs:
     build-ci-java-maven:
-        if: ${{ github.event.inputs.run_gradle == 'maven' }}
+        if: ${{ github.event.inputs.run_constructor == 'maven' }}
         runs-on: ubuntu-latest
 
         steps:
