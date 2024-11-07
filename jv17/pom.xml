@@ -51,4 +51,12 @@
 		</plugins>
 	</build>
 
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<name>GitHub Packages</name>
+			<url>https://maven.pkg.github.com/juliobsilva/github-workflows</url>
+		</repository>
+	</distributionManagement>
+
 </project>
