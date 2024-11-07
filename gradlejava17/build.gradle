@@ -32,6 +32,14 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
+            versionMapping { // Resolve as versões das dependências automaticamente
+                usage("java-api") {
+                    fromResolutionOf("runtimeClasspath")
+                }
+                usage("java-runtime") {
+                    fromResolutionResult()
+                }
+            }
         }
     }
     repositories {
