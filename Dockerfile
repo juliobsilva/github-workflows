@@ -1,7 +1,7 @@
 # Etapa 1: Construção
 FROM gradle:7.6.0-jdk17 AS builder
 WORKDIR /app
-COPY gradlejava17/* .
+COPY . .
 RUN gradle build --no-daemon
 
 # Etapa 2: Execução
