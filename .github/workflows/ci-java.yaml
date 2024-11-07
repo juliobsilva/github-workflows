@@ -37,7 +37,7 @@ jobs:
 
         - name: Publish to GitHub Packages
           run: |
-              mvn deploy:deploy-file -Dfile=jv17/target/jv17-0.0.1-SNAPSHOT.jar -DgroupId=com.example.avareview -DartifactId=jv17 -Dversion=0.0.1-SNAPSHOT -Dpackaging=jar -DrepositoryId=github -Durl=https://maven.pkg.github.com/juliobsilva/github-workflows
+              mvn deploy:deploy-file -Dfile=jv17/target/jv17-0.0.1-SNAPSHOT.jar -DgroupId=com.example.demo -DartifactId=jv17 -Dversion=0.0.1-SNAPSHOT -Dpackaging=jar -DrepositoryId=github -Durl=https://maven.pkg.github.com/juliobsilva/github-workflows
           env:
               GITHUB_TOKEN: ${{ secrets.TOKEN_GENERIC }}
         
