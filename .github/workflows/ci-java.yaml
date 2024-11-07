@@ -48,8 +48,8 @@ jobs:
           env:
               GITHUB_TOKEN: ${{ secrets.TOKEN_GENERIC }}
 
-    ci-gradle:
-      if: ${{ github.event.inputs.run_gradle == 'true' }}
+    if: ${{ github.event.inputs.run_gradle == 'true' }}
+    ci-gradle:      
       runs-on: ubuntu-latest
 
       steps:
