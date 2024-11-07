@@ -61,6 +61,9 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
 
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlejava17/gradlew
+
       - name: Build with Gradle
         run: cd gradlejava17 && ./gradlew build 
 
